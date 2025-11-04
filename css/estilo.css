@@ -1,36 +1,67 @@
 body{
   background-color: white;
-  margin: 0;
-  padding: 0;
 }
 
-header {
-  width: 100%;
-  background-color: #FF007F;
-  margin: 0;
+.navbar{
+  background-color: #5E918A;
+  color: #f0e5c7;
+}
+.navbar-brand{
+  color: #14151B;
+  font-weight: 500;
+  font-size: 25px;
+  transition: 0.3s color;
+}
+
+.login-button{
+  background-color: #14151B;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #f0e5c7;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+.login-button:hover{
+  background-color: #2a2b33;
+}
+
+.navbar-toggler{
   border: none;
+  font-size: 1.25rem;
+}
+.navbar-toggler:focus, .btn-close:focus{
+  box-shadow: none;
+  outline: none;
+}
+.nav-link{
+  color: #14151B;
+  font-weight: 500;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active{
+  color:  #FC3E57;
+}
+@media (min-width: 992px){
+  .nav-link::before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color:  #FC3E57;
+      visibility: hidden;
+      transition: 0.3s ease-in-out;
+  }
+  .nav-link:hover::before, .nav-link.active::before{
+      width: 100%;
+      visibility: visible;
+  }
 }
 
-.container-fluid {
-  padding: 0 !important; /* elimina relleno lateral */
-}
-
-/* Color de los enlaces */
-header .nav-link {
-  color: white !important;
-  font-size: larger;
-}
-header .nav-link:hover {
-  color: black !important;
-}
-header .nav-link.active {
-  background-color: transparent !important;
-  color: white !important;
-  font-weight: bold;
-}
-/* Cambiar el color del texto principal (el título) */
-header .fs-4 {
-  color: white;
+.offcanvas{
+  background-color: #fc3e57;
 }
 
 .carousel-item img {
@@ -39,7 +70,7 @@ header .fs-4 {
   object-fit: cover;    /* recorta para mantener proporción */
 }
 .carousel-caption {
-  background-color: #00FF00CC; /* el CC al final lo hace semitransparente*/
+  background-color:  #FC3E57; /* el CC al final lo hace semitransparente*/
   border-radius: 10px;
   padding: 10px;
 }
@@ -52,5 +83,4 @@ header .fs-4 {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: invert(1);
-  background-color: #00FF00CC;
 }

@@ -9,22 +9,35 @@
     <title>Lotus Peluqueria</title>
 </head>
 <body>
-    <!--Header-->
-    <div class="container-fluid">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" aria-hidden="true">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-            <img src="./img/logo.png" alt="logo" width="70" height="60" class="me-2">
-            <span class="fs-4">Lotus Peluqueria</span>
-          </a>
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href="./php/registrar.php" class="nav-link">Registrate</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Sobre nosotros</a></li>
-          </ul>
-        </header>
-    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand me-auto" href="#">Lotus Salon</a>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+             <div class="offcanvas-header">
+               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Más información</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+             </div>
+             <div class="offcanvas-body">
+               <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                 <li class="nav-item">
+                   <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Inicio</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link mx-lg-2" href="#">Sobre Nosotros</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link mx-lg-2" href="#">Noticias</a>
+                 </li>
+               </ul>
+             </div>
+          </div>
+          <a href="./php/registrar.php" class="login-button">Registrate</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+    </nav>
 
     <!--Carrusel-->
     <div id="carouselExampleCaptions" class="carousel slide">
