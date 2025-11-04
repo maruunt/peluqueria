@@ -1,0 +1,56 @@
+body{
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  background-color: #FF007F;
+  margin: 0;
+  border: none;
+}
+
+.container-fluid {
+  padding: 0 !important; /* elimina relleno lateral */
+}
+
+/* Color de los enlaces */
+header .nav-link {
+  color: white !important;
+  font-size: larger;
+}
+header .nav-link:hover {
+  color: black !important;
+}
+header .nav-link.active {
+  background-color: transparent !important;
+  color: white !important;
+  font-weight: bold;
+}
+/* Cambiar el color del texto principal (el título) */
+header .fs-4 {
+  color: white;
+}
+
+.carousel-item img {
+  height: 80vh; /* mitad de la altura visible del navegador es lo del view port*/
+  width: 100%;          /* ocupa todo el ancho */
+  object-fit: cover;    /* recorta para mantener proporción */
+}
+.carousel-caption {
+  background-color: #00FF00CC; /* el CC al final lo hace semitransparente*/
+  border-radius: 10px;
+  padding: 10px;
+}
+/* Texto del caption */
+.carousel-caption h5,
+.carousel-caption p {
+  color: black !important;
+  text-shadow: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+  background-color: #00FF00CC;
+}
