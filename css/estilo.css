@@ -84,3 +84,57 @@ body{
 .carousel-control-next-icon {
   filter: invert(1);
 }
+
+/*fotter*/
+footer{
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-top: 0;
+}
+footer h3{
+  font-size: 25px;
+  padding: 18px 0;
+}
+footer p{
+  padding: 3px 0;
+  font-size: 14px;
+}
+footer .footer-1{
+  padding: 10px 0;
+  background-color:#5E918A;
+  color: beige;
+}
+footer .footer-1 a{
+  display: block;
+  color: beige;
+  text-decoration: none;
+}
+footer .footer-2{
+  background-color: blue;
+  padding: 10px 0;
+  color: beige;
+}
+footer .redes-sociales{
+  display: flex;
+  justify-content: center;
+}
+footer .redes-sociales a{
+  margin: 0 8px;
+  font-size: 20px;
+}
+footer svg {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+}
+
+@media (min-width: 850px){
+  footer .footer-1{
+    display: flex;
+  }
+   footer .footer-1 div{
+    flex-grow: 1;
+   }
+}
