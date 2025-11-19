@@ -28,7 +28,11 @@ $servicio= $conexion ->query($serv);
     <section class="formulario">
         <h2>Agenda tu turno</h2>
         <p>Completa el formulario con tus datos y el servicio que deseas reservar.</p>
-        <form action="registrar.php" method="post">
+
+        <!--La aletra con js :v-->
+        <div id="alertaForm"></div>
+
+        <form id="formTurno" action="registrar.php" method="post">
             <div class="row g-3">
                 <div class="col">
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="First name">
@@ -44,7 +48,7 @@ $servicio= $conexion ->query($serv);
             </div>
 
             <label>Servicio</label>
-            <select name="servicio" class="form-select" aria-label="Default select example" required>
+            <select name="servicio" id="servicioSelect" class="form-select" aria-label="Default select example" required>
                 <option value="0">Seleccione el servicio que desea:</option>
                 <?php
                     while($fila=$servicio->fetch_assoc()){
@@ -52,12 +56,23 @@ $servicio= $conexion ->query($serv);
                     }
                 ?>
             </select> <br>
+            
+            <!--calendario-->
+            <div id="calendarioContainer" style="display:none; margin-top:20px;">
+                <h5>Selecciona fecha y hora</h5>
 
-            <input type="submit" class="btn btn-primary" name="Enviar">
+                <label>Fecha disponible</label>
+                <input id="fechaInput" type="date" class="form-control">
+
+                <label class="mt-2">Hora disponible</label>
+                <select id="horaInput" class="form-select"></select>
+            </div>
+
+            <input type="submit" id="botonValidar" class="btn btn-primary" name="Enviar">
         </form>
     </section>
     
-
+    <script src="../js/calendario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

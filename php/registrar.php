@@ -11,6 +11,6 @@ $conexion=new mysqli('localhost', 'root', '', 'peluqueria');
 //ejecutar consulta
 $conexion->query($insertar);
 
-header('Location:prueba.php');
+header('Location: form.php');
 
 ?>

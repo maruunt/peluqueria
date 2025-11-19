@@ -121,8 +121,15 @@ footer .redes-sociales{
   justify-content: center;
 }
 footer .redes-sociales a{
-  margin: 0 8px;
-  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: transform .12s ease, background-color .12s ease;
+  
 }
 footer svg {
   width: 20px;
