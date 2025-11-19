@@ -1,18 +1,23 @@
 <?php
 session_start();
-if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['clave']) && isset($_POST['servicio'])) {
-    $n = $_POST['nombre'];
-    $a = $_POST['apellido'];
-    $e = $_POST['email'];
-    $c = $_POST['clave'];
-    $s = $_POST['servicio'];
+if (!isset($_SESSION['email'])) {
+    // Usuario no autenticado, redirigir al login
+    header('Location: ../index.php');
+    exit();
+}
+
+if (isset($_POST['id_servicio']) && isset($_POST['fecha']) && isset($_POST['hora'])) {
+    $a = $_SESSION['id_usuario'];
+    $e = $_POST['id_servicio'];
+    $c = $_POST['fecha'];
+    $s = $_POST['hora'];
 } else {
     echo "No se han recibido datos";
     exit();
 }
 
 include ('./conexion.php');
-$insertar="INSERT INTO cliente (nombre, apellido, email, clave, servicio) VALUES ('$n', '$a', '$e', '$c', $s)"; //
+$insertar="INSERT INTO turnos (id_cliente, id_servicio, fecha, hora) VALUES ($a, $e, '$c', '$s')"; //
 // $conexion=new mysqli('localhost', 'root', '', 'peluqueria');
 //ejecutar consulta
 $result = $conexion->query($insertar);
@@ -27,5 +32,5 @@ if ($result) {
 }
 $conexion->close();
 
-header('Location: form.php');
+header('Location: turnos.php');
 ?>

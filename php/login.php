@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ('conexion.php');
 
 if (isset($_POST['email']) && isset($_POST['clave'])) {
@@ -9,8 +10,11 @@ if (isset($_POST['email']) && isset($_POST['clave'])) {
     $result = $conexion->query($query);
 
     if ($result->num_rows > 0) {
+        $_SESSION['email'] = $email;
+        $fila= $result -> fetch_assoc();
+        $_SESSION['id_usuario'] = $fila['id'];
         // Credenciales correctas, redirigir al formulario de reserva
-        header('Location: form.php');
+        header('Location: ../index.php');
         exit();
     } else {
         // Credenciales incorrectas, mostrar mensaje de error
@@ -31,7 +35,7 @@ if (isset($_POST['email']) && isset($_POST['clave'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand me-auto" href="../index.html"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <a class="navbar-brand me-auto" href="../index.php"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
             </svg> </a>
         </div>
@@ -39,7 +43,7 @@ if (isset($_POST['email']) && isset($_POST['clave'])) {
 
     <!--Formulario-->
     <section class="formulario">
-        <form action="">
+        <form action="" method="POST">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com" required>

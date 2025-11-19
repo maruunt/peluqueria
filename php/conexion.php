@@ -4,7 +4,8 @@ $usuario='root';
 $pass='';
 $bd='peluqueria';
 
-$conexion=mysqli_connect($servidor, $usuario, $pass, $bd);
+// $conexion=mysqli_connect($servidor, $usuario, $pass, $bd);
+$conexion = new mysqli($servidor, $usuario, $pass, $bd);
 
 //if (mysqli_connect_error()){
 //     echo 'conexion fallida';

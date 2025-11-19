@@ -1,11 +1,11 @@
-<?php
+<?php 
 session_start();
 error_reporting(0);
-//if (!isset($_SESSION['email'])) {
-//    // Usuario no autenticado, redirigir al login
-//    header('Location: login.php');
-//    exit();
-//}
+if (!isset($_SESSION['email'])) {
+    // Usuario no autenticado, redirigir al login
+    header('Location: ../index.php');
+    exit();
+}
 $serv = "SELECT id, tipo FROM servicio ORDER BY id ASC";
 include('conexion.php');
 // aca se ejecuta el coso
@@ -40,7 +40,8 @@ $servicio= $conexion->query($serv);
         <div id="alertaForm"></div>
         <?php if ($_SESSION['alerta'] == 'bienahre') : ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>¡Listo!</strong> Tu usuario ha sido registrado
+                <strong>¡Listo!</strong> Tu turno ha sido registrado con éxito. 
+                En dos días recibirás un correo de confirmación.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php unset($_SESSION['alerta']); ?>
@@ -52,26 +53,19 @@ $servicio= $conexion->query($serv);
         <?php unset($_SESSION['alerta']); ?>
         <?php endif; ?>
 
-        <form id="formTurno" action="registrar.php" method="POST">
-            <div class="row g-3">
-                <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="First name" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Last name" required>
-                </div>
-            </div>
+        <form id="formTurno" action="turnoguardar.php" method="POST">
+            <label>Servicio</label>
+            <select name="id_servicio" class="form-select" aria-label="Default select example" required>
+                <option value="0">Seleccione el servicio que desea:</option>
+                <?php
+                    while($fila=$servicio->fetch_assoc()){
+                        echo "<option value='{$fila['id']}'> {$fila['tipo']}</option>";
+                    }
+                ?>
+            </select> <br>
+            <p><input type="date" class="form-control" name="fecha"></p>
+            <p><input type="time" class="form-control" name="hora"> </p>
 
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com" required>
-                <div id="emailHelp" class="form-text">No compartiremos tu correo electrónico con nadie más.</div>
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" name="clave" class="form-control" id="exampleInputPassword1" required>
-            </div>
 
             <input type="submit" id="botonValidar" class="btn btn-primary" name="Enviar">
         </form>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,79 @@
     <title>Lotus Peluqueria</title>
 </head>
 <body>
+  <style>
+    .navbar,
+.navbar * {
+  color: white !important;
+}
+
+.navbar{
+  background-color: #242834;
+}
+.navbar-brand{
+  font-weight: 500;
+  font-size: 25px;
+  transition: 0.3s color;
+}
+
+.login-button{
+  background-color: #7D53FF;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #f0e5c7;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+.login-button:hover{
+  background-color: #593ab4;
+}
+
+.navbar-toggler{
+  border: none;
+  font-size: 1.25rem;
+}
+.navbar-toggler-icon {
+  filter: invert(1) brightness(200%);
+}
+
+.navbar-toggler:focus, .btn-close:focus{
+  box-shadow: none;
+  outline: none;
+}
+.nav-link{
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+.nav-link:hover, .nav-link.active{
+  color:  #B6FF00;
+}
+@media (min-width: 992px){
+  .nav-link::before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color:  #B6FF00;
+      visibility: hidden;
+      transition: 0.3s ease-in-out;
+  }
+  .nav-link:hover::before, .nav-link.active::before{
+      width: 100%;
+      visibility: visible;
+  }
+}
+
+.offcanvas{
+  background-color: #242834 !important;
+  color: white !important;
+}
+
+
+  </style>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
@@ -34,8 +111,13 @@
              </div>
           </div>
 
-          <a href="./php/login.php" class="btn btn-link">Iniciar Sesion</a>
-          <a href="./php/form.php" class="login-button">Registrate</a>
+          <?php if (isset($_SESSION['email'])): ?>
+            <a href="./php/turnos.php" class="login-button">Turnos</a> &nbsp; &nbsp;
+            <a href="./php/logout.php" class="login-button">Cerrar sesion</a>
+            <?php else:?>
+              <a href="./php/login.php" class="btn btn-link">Iniciar Sesion</a>
+              <a href="./php/form.php" class="login-button">Registrate</a>
+          <?php endif; ?>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

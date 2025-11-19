@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2025 a las 05:03:56
+-- Tiempo de generación: 19-11-2025 a las 23:07:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -32,15 +32,18 @@ CREATE TABLE `cliente` (
   `nombre` varchar(20) NOT NULL,
   `apellido` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `servicio` int(11) NOT NULL
+  `clave` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `email`, `servicio`) VALUES
-(1, 'mari', 'pepeep', 'laskls@akssk.com', 1);
+INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `email`, `clave`) VALUES
+(1, 'wisin', 'yandel', 'wy@gmail.com', '12345'),
+(2, 'romeo', 'santos', 'romisan@gmail.com', '54321'),
+(3, 'daddy', 'yankee', 'daddyyankee@gmail.com', '11122'),
+(4, 'plan', 'b', 'planb@gmail.com', 'jaja2');
 
 -- --------------------------------------------------------
 
@@ -64,6 +67,27 @@ INSERT INTO `servicio` (`id`, `tipo`) VALUES
 (3, 'nutricion'),
 (2, 'peinado');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `turnos`
+--
+
+CREATE TABLE `turnos` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_servicio` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id`, `id_cliente`, `id_servicio`, `fecha`, `hora`) VALUES
+(1, 1, 2, '2025-11-21', '11:41:00');
+
 --
 -- Índices para tablas volcadas
 --
@@ -72,8 +96,7 @@ INSERT INTO `servicio` (`id`, `tipo`) VALUES
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `servicio` (`servicio`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `servicio`
@@ -83,6 +106,14 @@ ALTER TABLE `servicio`
   ADD KEY `tipo` (`tipo`);
 
 --
+-- Indices de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`,`id_servicio`),
+  ADD KEY `id_servicio` (`id_servicio`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -90,7 +121,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
@@ -99,14 +130,21 @@ ALTER TABLE `servicio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `turnos`
+--
+ALTER TABLE `turnos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `cliente`
+-- Filtros para la tabla `turnos`
 --
-ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`servicio`) REFERENCES `servicio` (`id`);
+ALTER TABLE `turnos`
+  ADD CONSTRAINT `turnos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
+  ADD CONSTRAINT `turnos_ibfk_2` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
