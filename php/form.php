@@ -35,16 +35,16 @@ $servicio= $conexion ->query($serv);
         <form id="formTurno" action="registrar.php" method="post">
             <div class="row g-3">
                 <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="First name">
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre" aria-label="First name" required>
                 </div>
                  <div class="col">
-                    <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Last name">
+                    <input type="text" name="apellido" class="form-control" placeholder="Apellido" aria-label="Last name" required>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com" required>
             </div>
 
             <label>Servicio</label>
