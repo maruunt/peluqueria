@@ -84,8 +84,104 @@ session_start();
   color: white !important;
 }
 
+.sobre-nosotros {
+  background-color: #3A2F4F;
+  padding: 60px 0;
+  color: white;
+}
 
-  </style>
+.sobre-nosotros h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #B6FF00;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.sobre-nosotros p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: white;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+.sobre-nosotros .texto {
+  margin-top: 20px;
+  font-size: 1.15rem;
+  color: white;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sobre-nosotros p {
+    text-align: center;
+    padding: 0 15px;
+  }
+}
+
+
+
+.mapa-c{
+   background-color: #B6FF00;      /* contorno verde */
+  border-radius: 25px;
+  padding: 4px;
+}
+.mapa{
+  width: px;
+  height: 350px;
+  border: 0;
+  border-radius: 20px;
+}
+
+/* GALERÍA */
+.galeria{
+  background-color: #473960ff;   /* mismo fondo que sobre nosotros */
+  padding: 60px 0;
+  color: white;
+}
+
+.galeria h2{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #B6FF00;   /* verde de tu paleta */
+  margin-bottom: 30px;
+}
+
+.galeria-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.galeria-grid .item{
+  width: 100%;
+  aspect-ratio: 1 / 1;        /* mantiene forma cuadrada */
+  background-color: #242834;  /* borde oscuro atrás */
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.galeria-grid .item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+  .galeria-grid{
+    grid-template-columns: 1fr;
+  }
+}
+ </style>
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
@@ -101,11 +197,10 @@ session_start();
                    <a class="nav-link mx-lg-2 active" aria-current="page" href="#">Inicio</a>
                  </li>
                  <li class="nav-item">
-                   <!-- CAMBIO: AGREGADO href="#sobre-nosotros" -->
                    <a class="nav-link mx-lg-2" href="#sobre-nosotros">Sobre Nosotros</a>
                  </li>
                  <li class="nav-item">
-                   <a class="nav-link mx-lg-2" href="#">Noticias</a>
+                   <a class="nav-link mx-lg-2" href="#galeria">Galería</a>
                  </li>
                </ul>
              </div>
@@ -134,7 +229,7 @@ session_start();
      </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="./img/pelo1.png" class="d-block w-100">
+          <img src="./img/pelo6.png" class="d-block w-100">
           <div class="carousel-caption d-none d-md-block">
             <h5>Hair art</h5>
             <p>Llega al color que deseas</p>
@@ -142,7 +237,7 @@ session_start();
         </div>
 
       <div class="carousel-item">
-        <img src="./img/pelo2.png" class="d-block w-100" alt="...">
+        <img src="./img/pelo7.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Hair art</h5>
           <p>Aceptamos las ideas mas originales</p>
@@ -150,7 +245,7 @@ session_start();
       </div>
 
       <div class="carousel-item">
-        <img src="./img/pelo3.png" class="d-block w-100" alt="...">
+        <img src="./img/pelo8.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Cortes</h5>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
@@ -158,7 +253,7 @@ session_start();
       </div>
 
       <div class="carousel-item">
-        <img src="./img/pelo4.png" class="d-block w-100" alt="...">
+        <img src="./img/pelo9.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Nutricion</h5>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
@@ -176,13 +271,13 @@ session_start();
     </button>
     </div>
 
-    <!-- SOBRE NOSOTROS (AGREGADO) -->
-    <section id="sobre-nosotros" style="padding: 80px 20px; background-color: #f0e5c7;">
+    <!-- sobre nosotros -->
+    <section id="sobre-nosotros" class="sobre-nosotros">
         <div class="container">
-            <h2 style="text-align: center; color: #14151B; margin-bottom: 20px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">
                 Sobre Nosotros
             </h2>
-            <p style="max-width: 800px; margin: auto; font-size: 18px; line-height: 1.6; color: #14151B;">
+            <p style="max-width: 800px; margin: auto; font-size: 18px; line-height: 1.6;">
                 En Lotus Salon trabajamos para que cada persona que nos visita 
                 viva una experiencia única. Nuestro equipo combina creatividad, 
                 técnica y pasión para lograr resultados que destaquen tu estilo 
@@ -198,6 +293,21 @@ session_start();
         </div>
     </section>
 
+    <!-- GALERÍA -->
+<section id="galeria" class="galeria">
+    <div class="container">
+        <h2>Galería</h2>
+
+        <div class="galeria-grid">
+            <div class="item"><img src="./img/pelo10.png"></div>
+            <div class="item"><img src="./img/pelo11.png"></div>
+            <div class="item"><img src="./img/pelo12.png"></div>
+            <div class="item"><img src="./img/pelo13.png"></div>
+        </div>
+    </div>
+</section>
+
+
     <!--Footer-->
     <footer>
       <section class="footer-1">
@@ -212,8 +322,10 @@ session_start();
           <p>Calle falsa 123</p>
         </div>
 
-        <div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.115298771301!2d-58.49933262350358!3d-34.601245857369015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb72d24c8e179%3A0x7077f75f33002511!2sPeluquer%C3%ADa%20%26%20Barberia%20-%20CAMDEN%20STUDIO!5e0!3m2!1ses!2sar!4v1763522669599!5m2!1ses!2sar" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="mapa-w">
+        <div class="mapa-c">
+          <iframe class="mapa"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.115298771301!2d-58.49933262350358!3d-34.601245857369015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb72d24c8e179%3A0x7077f75f33002511!2sPeluquer%C3%ADa%20%26%20Barberia%20-%20CAMDEN%20STUDIO!5e0!3m2!1ses!2sar!4v1763522669599!5m2!1ses!2sar" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         </div>
 
         <div>
